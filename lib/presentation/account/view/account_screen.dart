@@ -122,6 +122,31 @@ class AccountScreen extends StatelessWidget {
                   ),
 
 
+                 //----------------------Profile image ------------
+                  SizedBox(height: 15,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //------------------Male profile---------
+                      InkWell(
+                        //onTap: ,
+                        child: CircleAvatar(
+                            radius: 30,
+                            child: Image.asset("assets/images/male-user-1.png")
+                        ),
+                      ),
+
+                      SizedBox(width: 15,),
+                      //-----------------Female Profile -------
+                      InkWell(
+                        //onTap:,
+                        child: CircleAvatar(
+                            radius: 30,
+                            child: Image.asset("assets/images/female-user-1.png")
+                        ),
+                      ),
+                    ],
+                  ),
 
 
                   SizedBox(height: 30,),

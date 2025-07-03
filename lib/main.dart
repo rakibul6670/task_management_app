@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:task_app/app/routes/app_routes.dart';
+import 'package:task_app/core/services/auth_api_services.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async{
+  AuthApiServices.getUser();
 
 
   runApp(MyApp());

@@ -44,11 +44,11 @@ class SignupController extends GetxController{
   }
 
 
-  //=======================
+  //======================= Signup ==============
   void signup(Map<String,dynamic> addUser) async{
     try{
       final response = AuthApiServices.addUser(addUser);
-      if(response!= null){
+      if(response != null){
         SnackbarUtil.showSuccess("Successful", "Signup");
       }
       else{

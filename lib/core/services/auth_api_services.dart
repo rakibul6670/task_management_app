@@ -3,23 +3,28 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:task_app/app/constants/api_constant.dart';
 
+import '../../data/models/auth_models.dart';
+
 class AuthApiServices{
 
-  // //================== GET User ==============
-  // static Future<void>  getUser() async {
-  //   try{
-  //     final url=Uri.parse("${ApiConstant.mainUrl}${ApiConstant.user}");
-  //     final response = await http.get(url);
-  //     if(response.statusCode ==200){
-  //       print("Fetch User : \n${jsonDecode(response.body)}");
-  //       return jsonDecode(response.body);
-  //     }
-  //   }
-  //   catch(e){
-  //     print("Error: $e");
-  //   }
-  // }
-  //
+  //================== GET User ==============
+  static Future<dynamic>  getUser() async {
+    try{
+      final url=Uri.parse("${ApiConstant.mainUrl}${ApiConstant.user}");
+      final response = await http.get(url);
+      if(response.statusCode ==200){
+        List<Map<String,dynamic>> allUser = List<Map<String,dynamic>>.from(jsonDecode(response.body));
+        return allUser.map((user)=> AuthModels.fromJson(user)).toList();
+      }
+      else{
+        throw Exception("Something went wrong !");
+      }
+    }
+    catch(e){
+      print("Error: $e");
+    }
+  }
+
 
 
   //=================== POST User ============

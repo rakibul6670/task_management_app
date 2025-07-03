@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
       //=================== AppBar Section =========================
       appBar: AppBar(
         backgroundColor: Colors.white,
-        
+        automaticallyImplyLeading: false,
         title: Text("Hello,Rakibul",style: TextStyle(
           fontSize: 23,
           fontWeight: FontWeight.bold,
@@ -40,11 +42,13 @@ class DashboardScreen extends StatelessWidget {
           unselectedItemColor: Colors.grey,
           selectedItemColor: Colors.blue,
 
+          //onTap: (){},
+
           showUnselectedLabels: true,
           showSelectedLabels: true,
 
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Home"),
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: "Today Task"),
             BottomNavigationBarItem(icon: Icon(Icons.list_alt_rounded),label: "ALl Task"),
             BottomNavigationBarItem(icon: Icon(Icons.check_circle_rounded),label: "Complete"),
           ],
