@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_app/app/constants/constant_color.dart';
+import 'package:task_app/presentation/profile/controller/profile_controller.dart';
+import 'package:task_app/shared/widgets/custom_dialog.dart';
 
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final ProfileController profileController =Get.find<ProfileController>();
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,11 @@ class ProfileScreen extends StatelessWidget {
         leading: InkWell(
             onTap: (){
               //------------Navigate back dashboardScreen-----
-              Get.offNamed("/dashboard");
+              Get.back();
             },
             child: Icon(Icons.arrow_back,size: 30,)
         ),
+        title: Text("Profile"),
       ),
 
 
@@ -33,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
                padding: EdgeInsets.all(20),
                child: Column(
                  children: [
-             
+
                    //-------------------Profile Header Section -------
                    Container(
                      height: 130,
@@ -49,25 +54,25 @@ class ProfileScreen extends StatelessWidget {
                          )
                        ]
                      ),
-                     
+
                      child: Center(
-                       child: ListTile(
+                       child:Obx(()=>  ListTile(
                          //------------image -------
                          leading: CircleAvatar(
                            child: Image.asset('assets/images/male-user-1.png'),
                          ),
 
                          //-------------Name ---------
-                         title: Text("Rakibul Hossain",),
+                         title: Text(profileController.userName.value,),
                          //------------ Email --------
-                         subtitle: Text("rakibulpb6670@gmail.com"),
-                       ),
+                         subtitle: Text(profileController.userEmail.value),
+                       )),
                      ),
-                     
+
                    ),
-                   
+
                    SizedBox(height: 35,),
-                   
+
                    //-----------------Account ----------
                    ListTile(
                      onTap: (){
@@ -77,7 +82,8 @@ class ProfileScreen extends StatelessWidget {
                      leading: Icon(Icons.manage_accounts_outlined,size: 35,),
                      title: Text("Account"),
                    ),
-                   
+
+
                    //-----------------Settings ---------
                    ListTile(
                      onTap: (){
@@ -87,18 +93,29 @@ class ProfileScreen extends StatelessWidget {
                      leading: Icon(Icons.settings,size: 35,),
                      title: Text("Settings"),
                    ),
-                   
+
+
                    //---------------- Log Out ---------
                    ListTile(
                      onTap: (){
                        //----------go to account screen -----
+                       showConfirmDialog(
+                           title: 'Are You Sure ?',
+                           content: 'Do you want to logout',
+                           logout: () {
+                             Get.back();
+                             ProfileController().logout();
+
+                           }
+                       );
+
                      },
                      leading: Icon(Icons.logout,size: 35,),
                      title: Text("Log out"),
                    )
-                   
-                   
-             
+
+
+
                  ],
                ),
              ),

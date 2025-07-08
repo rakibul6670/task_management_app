@@ -16,7 +16,7 @@ class DashboardScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
-        title: Text("Hello,Rakibul",style: TextStyle(
+        title: Text("Task Management ",style: TextStyle(
           fontSize: 23,
           fontWeight: FontWeight.bold,
         ),),
@@ -25,7 +25,7 @@ class DashboardScreen extends StatelessWidget {
           InkWell(
               onTap: (){
                 //-----------Navigate to Profile
-                Get.offNamed("/profile");
+                Get.toNamed("/profile");
               },
               child: Image.asset("assets/images/male-user-1.png",height: 40,width: 40,)
           ),

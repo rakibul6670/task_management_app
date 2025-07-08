@@ -121,13 +121,15 @@ class LoginScreen extends StatelessWidget {
                           SizedBox(height: 10,),
 
                           //------------------- Sign up button --------------------------
-                          CustomButton(
+                          Obx(()=> loginController.isLoading.value
+                              ? Center(child: CircularProgressIndicator(color: Colors.white,))
+                              : CustomButton(
                             onPressed: loginController.validateLogin,
                             height: 50,
                             width:size.width,
                             buttonName: 'Login',
                             fontSize: 26,
-                          ),
+                          ),),
 
                           SizedBox(height: 15,),
 

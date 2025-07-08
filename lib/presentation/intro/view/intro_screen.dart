@@ -2,12 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:task_app/presentation/intro/widgets/gradientButton.dart';
+import 'package:task_app/presentation/intro/controller/intro_controller.dart';
 import 'package:task_app/presentation/intro/widgets/intro_decoration.dart';
 import '../widgets/intro_image.dart';
 
 class IntroScreen extends StatelessWidget {
-  const IntroScreen({super.key});
+   IntroScreen({super.key});
+
+  final IntroController introController =Get.find<IntroController>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +71,10 @@ class IntroScreen extends StatelessWidget {
 
 
       onSkip: (){
-        // go to login
-        Get.offNamed("/login");
+        introController.skip();
       },
       onDone: (){
-        // go to login
-        Get.offNamed("/login");
+       introController.done();
       },
 
       globalBackgroundColor: Colors.white,

@@ -22,6 +22,11 @@ class SignupController extends GetxController{
   //-------------------- Password obscure ----
   RxBool isObscure =true.obs;
 
+
+  //---------------- isLoading for show circular indicator ----
+  RxBool isLoading =false.obs;
+
+
   //========================== Validate Signup ============
   void validateSignup(){
 
@@ -47,6 +52,7 @@ class SignupController extends GetxController{
   //======================= Signup ==============
   void signup(Map<String,dynamic> addUser) async{
     try{
+      isLoading.value=true;
       final response = AuthApiServices.addUser(addUser);
       if(response != null){
         SnackbarUtil.showSuccess("Successful", "Signup");
@@ -58,6 +64,9 @@ class SignupController extends GetxController{
     catch(e){
       SnackbarUtil.showError("Error", "Sign up error: $e");
 
+    }
+    finally{
+      isLoading.value =false;
     }
   }
 

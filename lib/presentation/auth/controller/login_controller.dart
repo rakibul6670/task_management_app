@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:task_app/core/services/auth_api_services.dart';
+import 'package:task_app/core/services/local_storage.dart';
 import 'package:task_app/core/utils/validation.dart';
 
 import '../../../core/utils/snackbar_utils.dart';
@@ -22,22 +23,49 @@ class LoginController extends GetxController{
   //-------------------- Password obscure ----
   RxBool isObscure =true.obs;
 
+  //-------------------Indicator Loading --------
+  RxBool isLoading =false.obs;
+
+
+  //--------------------Local Storage Instance-----
+  final LocalStorage localStorage =LocalStorage();
+
+  @override
+  void onInit(){
+    super.onInit();
+    localStorage.init();
+  }
+
+
+
+
 //============================ Validate login ===========
   Future<void> validateLogin() async{
+    try{
+      isLoading.value =true;
 
-    emailError.value =Validation.emailValidator(emailController.text.trim()) ??'';
-    passwordError.value =Validation.passwordValidator(passwordController.text.trim())?? "";
+      emailError.value =Validation.emailValidator(emailController.text.trim()) ??'';
+      passwordError.value =Validation.passwordValidator(passwordController.text.trim())?? "";
 
-    if(emailError.value.isEmpty && passwordError.value.isEmpty){
-      //================= Login ========
-      await login();
+      if(emailError.value.isEmpty && passwordError.value.isEmpty){
+        //================= Login ========
+        await login();
 
+      }
+      else{
+
+      }
     }
-    else{
-
+    catch(e){
+      print(e);
+    }
+    finally{
+      isLoading.value=false;
     }
 
   }
+
+
 
  // =======================Login ============
  Future<void> login() async{
@@ -56,6 +84,12 @@ class LoginController extends GetxController{
           SnackbarUtil.showSuccess("Login Success", "Welcome ${matchUser.name}, have a productive day! 😊");
           //---------------Navigate to dashboard ------------
           Get.offNamed("/dashboard");
+
+          //--------------Login status value set ----------
+          localStorage.setLoggedIn(true);
+          localStorage.setUserName(matchUser.name);
+          localStorage.setUserEmail(matchUser.email);
+
         }
         else{
           SnackbarUtil.showError("Login Failed", "Email or password didn't match.");

@@ -117,13 +117,15 @@ class SignupForm extends StatelessWidget {
               SizedBox(height: 10,),
 
               //------------------- Sign up button --------------------------
-              CustomButton(
+              Obx(()=> signupController.isLoading.value
+              ? Center(child: CircularProgressIndicator(color: Colors.white,))
+              :CustomButton(
                 onPressed: signupController.validateSignup,
                 height: 50,
                 width:size.width,
                 buttonName: 'Sign up',
                 fontSize: 26,
-              ),
+              ),),
 
               SizedBox(height: 15,),
 

@@ -16,7 +16,7 @@ class SettingsScreen extends StatelessWidget {
         leading: InkWell(
           onTap: (){
             //---------------back to profile ------
-            Get.offNamed("/profile");
+            Get.back();
           },
           child: Icon(Icons.arrow_back,size: 30,),
         ),
