@@ -89,6 +89,7 @@ class LoginController extends GetxController{
           localStorage.setLoggedIn(true);
           localStorage.setUserName(matchUser.name);
           localStorage.setUserEmail(matchUser.email);
+          localStorage.setUserId(matchUser.id);
 
         }
         else{

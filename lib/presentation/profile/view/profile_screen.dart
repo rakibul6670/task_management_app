@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_app/app/constants/constant_color.dart';
-import 'package:task_app/presentation/profile/controller/profile_controller.dart';
-import 'package:task_app/shared/widgets/custom_dialog.dart';
+import 'package:task_app/presentation/profile/view/widgets/logout_section.dart';
+import 'package:task_app/presentation/profile/view/widgets/profile_section.dart';
+
 
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
-
-  final ProfileController profileController =Get.find<ProfileController>();
+ const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,37 +38,8 @@ class ProfileScreen extends StatelessWidget {
                child: Column(
                  children: [
 
-                   //-------------------Profile Header Section -------
-                   Container(
-                     height: 130,
-                     padding: EdgeInsets.all(5),
-                     decoration: BoxDecoration(
-                       color: ConstantColor.profileContainerBg,
-                       borderRadius: BorderRadius.all(Radius.circular(12)),
-                       boxShadow:[
-                         BoxShadow(
-                           color: ConstantColor.profileContainerShadow,
-                           blurRadius: 4,
-                           offset: Offset(0, 3)
-                         )
-                       ]
-                     ),
-
-                     child: Center(
-                       child:Obx(()=>  ListTile(
-                         //------------image -------
-                         leading: CircleAvatar(
-                           child: Image.asset('assets/images/male-user-1.png'),
-                         ),
-
-                         //-------------Name ---------
-                         title: Text(profileController.userName.value,),
-                         //------------ Email --------
-                         subtitle: Text(profileController.userEmail.value),
-                       )),
-                     ),
-
-                   ),
+                   //-------------------Profile  Section -------
+                   ProfileSection(),
 
                    SizedBox(height: 35,),
 
@@ -95,26 +65,8 @@ class ProfileScreen extends StatelessWidget {
                    ),
 
 
-                   //---------------- Log Out ---------
-                   ListTile(
-                     onTap: (){
-                       //----------go to account screen -----
-                       showConfirmDialog(
-                           title: 'Are You Sure ?',
-                           content: 'Do you want to logout',
-                           logout: () {
-                             Get.back();
-                             ProfileController().logout();
-
-                           }
-                       );
-
-                     },
-                     leading: Icon(Icons.logout,size: 35,),
-                     title: Text("Log out"),
-                   )
-
-
+                  //================Logout Section ============
+                  LogoutSection()
 
                  ],
                ),

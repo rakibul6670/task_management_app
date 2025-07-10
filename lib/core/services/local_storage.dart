@@ -14,8 +14,12 @@ class LocalStorage{
   //-----------Key as Constants ------
   static const String _keyIntroSeen ="introSeen";
   static const String _keyLoggedIn ="isLoggedIn";
+
   static const String _keyUserName ="userName";
   static const String _keyUserEmail ="userEmail";
+  static const String _keyUserId ="userId";
+
+  static const String _keyUserProfile ="isMale";
 
 
 
@@ -28,6 +32,9 @@ class LocalStorage{
 
   String get userName =>_prefs.getString(_keyUserName)??"Unknown User";
   String get userEmail => _prefs.getString(_keyUserEmail)??"Unknown User";
+  String get userId => _prefs.getString(_keyUserId)??"0";
+
+  bool get userProfile => _prefs.getBool(_keyUserProfile)??true;
 
 
 
@@ -43,6 +50,13 @@ class LocalStorage{
 
   Future<void> setUserEmail(String email) async =>
       await _prefs.setString(_keyUserEmail, email);
+
+  Future<void> setUserId(String id) async =>
+  await _prefs.setString(_keyUserId, id);
+
+
+  Future<void> setUserProfile(bool isMale) async =>
+  await _prefs.setBool(_keyUserProfile, isMale);
   
   
   
