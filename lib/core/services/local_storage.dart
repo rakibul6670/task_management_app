@@ -19,7 +19,8 @@ class LocalStorage{
   static const String _keyUserEmail ="userEmail";
   static const String _keyUserId ="userId";
 
-  static const String _keyUserProfile ="isMale";
+  static const String _keyUserProfile ="userProfileImage";
+  static const String _keyUserProfileIsMale ="UserProfileIsMale";
 
 
 
@@ -34,7 +35,9 @@ class LocalStorage{
   String get userEmail => _prefs.getString(_keyUserEmail)??"Unknown User";
   String get userId => _prefs.getString(_keyUserId)??"0";
 
-  bool get userProfile => _prefs.getBool(_keyUserProfile)??true;
+  String get userProfile => _prefs.getString(_keyUserProfile)??"assets/images/male-user-1.png";
+
+  bool get userProfileIsMale => _prefs.getBool(_keyUserProfileIsMale)??true;
 
 
 
@@ -55,8 +58,11 @@ class LocalStorage{
   await _prefs.setString(_keyUserId, id);
 
 
-  Future<void> setUserProfile(bool isMale) async =>
-  await _prefs.setBool(_keyUserProfile, isMale);
+  Future<void> setUserProfile(String profileUrl) async =>
+  await _prefs.setString(_keyUserProfile, profileUrl);
+
+  Future<void> setUserProfileIsMale(bool isMale) async =>
+  await _prefs.setBool(_keyUserProfileIsMale, isMale);
   
   
   

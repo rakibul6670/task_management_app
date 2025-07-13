@@ -33,11 +33,9 @@ class DashboardScreen extends StatelessWidget {
                 //-----------Navigate to Profile
                 Get.toNamed("/profile");
               },
-              child:  Image.asset(
-               // accountController.isMale.value
-               // ? "assets/images/male-user-1.png"
-                 "assets/images/male-user-1.png",
-                height: 40,width: 40,)),
+              child:  Obx(()=>Image.asset(
+                dashboardController.userProfileImage.value,
+                height: 40,width: 40,),)),
 
           SizedBox(width: 10,),
         ],

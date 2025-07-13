@@ -17,18 +17,21 @@ class DashboardController extends GetxController{
   RxInt currentIndex=0.obs;
 
   //---------------------User Profile ------
-  RxBool isMale =true.obs;
+  RxString userProfileImage ="assets/images/male-user-1.png".obs;
 
-  // final LocalStorage localStorage =LocalStorage();
-  //
-  // @override
-  // void onInit(){
-  //   super.onInit();
-  //   localStorage.init();
-  //  isMale.value = localStorage.userProfile;
-  //
-  // }
+  final LocalStorage localStorage =LocalStorage();
 
+  @override
+  void onInit() {
+    super.onInit();
+    profileLoad();
+
+  }
+
+  Future<void> profileLoad() async{
+   await localStorage.init();
+    userProfileImage.value =localStorage.userProfile;
+  }
 
 
 

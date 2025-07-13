@@ -32,7 +32,7 @@ class ProfileSection extends StatelessWidget {
         child:Obx(()=>  ListTile(
           //------------image -------
           leading: CircleAvatar(
-            child: Image.asset('assets/images/male-user-1.png'),
+            child: Image.asset(profileController.userProfile.value),
           ),
 
           //-------------Name ---------

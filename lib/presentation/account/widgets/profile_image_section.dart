@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../controller/account_controller.dart';
 
 class ProfileImageSection extends StatelessWidget {
@@ -18,7 +16,6 @@ class ProfileImageSection extends StatelessWidget {
         //------------------Male profile---------
         Obx(()=>InkWell(
           onTap:(){
-            print("isMale : ${accountController.isMale.value}");
             accountController.isMale.value=true;
           },
           child:  CircleAvatar(
@@ -34,7 +31,6 @@ class ProfileImageSection extends StatelessWidget {
         //-----------------Female Profile -------
         Obx(()=>InkWell(
           onTap:(){
-            print("isMale Female : ${accountController.isMale.value}");
             accountController.isMale.value =false;
           },
           child: CircleAvatar(

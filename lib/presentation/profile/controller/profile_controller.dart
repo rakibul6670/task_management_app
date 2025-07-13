@@ -8,6 +8,7 @@ class ProfileController extends GetxController{
 
   RxString userName =''.obs;
   RxString userEmail = ''.obs;
+  RxString userProfile ="assets/images/male-user-1.png".obs;
 
 
   @override
@@ -21,6 +22,7 @@ class ProfileController extends GetxController{
     await localStorage.init();
     userName.value = localStorage.userName;
     userEmail.value = localStorage.userEmail;
+    userProfile.value=localStorage.userProfile;
   }
 
   Future<void> logout() async{
