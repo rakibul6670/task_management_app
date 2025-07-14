@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_app/presentation/settings/widgets/app_preference.dart';
+import 'package:task_app/presentation/settings/widgets/remainder_alert_section.dart';
 import 'package:task_app/shared/widgets/custom_info_title.dart';
 import '../../../app/constants/constant_color.dart';
 
@@ -28,22 +30,17 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
-              //================ App Preference ================
+              //================ App Preference ============================================
               Text("App Preference"),
-              Card(child: Column(
-                children: [
-                  
-                ],
-              ),),
+              AppPreference(),
 
               SizedBox(height: 15,),
 
 
               //==================== Reminder & Alert Section =========
               Text("Reminder & Alert"),
-              Card(child: Column(
-                children: [],
-              ),),
+              RemainderAlertSection(),
+
 
               SizedBox(height: 15,),
 

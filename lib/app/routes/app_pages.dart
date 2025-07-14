@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
+import 'package:task_app/presentation/account/bindings/account_bindings.dart';
 import 'package:task_app/presentation/auth/bindings/auth_bindings.dart';
 import 'package:task_app/presentation/auth/view/signup/signup_screen.dart';
 import 'package:task_app/presentation/auth/view/login/login_screen.dart';
+import 'package:task_app/presentation/dashboard/bindings/dashboard_bindings.dart';
 import 'package:task_app/presentation/dashboard/view/dashboard_screen.dart';
 import 'package:task_app/presentation/intro/bindings/intro_bindings.dart';
 import 'package:task_app/presentation/intro/view/intro_screen.dart';
@@ -23,9 +25,9 @@ class AppPages{
     GetPage(name: AppRoutes.login, page: ()=>LoginScreen(),binding: AuthBindings()),
     GetPage(name: AppRoutes.signup, page:()=>SignupScreen(),binding: AuthBindings()),
 
-    GetPage(name: AppRoutes.dashboard, page: ()=>DashboardScreen()),
+    GetPage(name: AppRoutes.dashboard, page: ()=>DashboardScreen(),binding: DashboardBindings()),
     GetPage(name: AppRoutes.profile, page: ()=>ProfileScreen(),binding: ProfileBindings()),
-    GetPage(name: AppRoutes.account, page: ()=>AccountScreen()),
+    GetPage(name: AppRoutes.account, page: ()=>AccountScreen(),binding: AccountBindings()),
     GetPage(name: AppRoutes.settings, page: ()=>SettingsScreen()),
 
   ];

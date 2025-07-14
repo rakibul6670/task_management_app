@@ -44,7 +44,8 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   #this package for api
   http: ^1.4.0
-
+  #this package for show percent indicator
+  percent_indicator: ^4.2.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
