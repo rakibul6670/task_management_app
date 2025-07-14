@@ -1,11 +1,15 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:task_app/presentation/settings/controller/settings_controller.dart';
 
 class RemainderAlertSection extends StatelessWidget {
   const RemainderAlertSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final SettingsController settingsController =Get.find<SettingsController>();
+    
     return Card(child: Padding(
       padding: const EdgeInsets.all(12.0),
       child: Column(
@@ -14,92 +18,62 @@ class RemainderAlertSection extends StatelessWidget {
 
           SizedBox(height: 10,),
           //---------------------Enable Remainder ----------
-          SwitchListTile(
+          Obx(()=>SwitchListTile(
               title: Text("Enable Remainder"),
-              value: true, onChanged: (value){}
-          ),
+              value: settingsController.enableRemainder.value,
+              onChanged: (value){
+                settingsController.enableRemainder.value = value;
+              }
+          )),
 
           SizedBox(height: 10,),
 
           //=====================Repeat ===================
           Text("Repeat",style: TextStyle(
-            fontSize: 20,
+            fontSize: 17,
+            fontWeight: FontWeight.bold
           ),),
 
           SizedBox(height: 10,),
 
-          Column(
-            children: [
-
-              //------------Once----
-              RadioListTile(
-                  title: Text("Once"),
-                  value: false,
-                  groupValue:context,
-                  onChanged: (value){}
-              ),
-
-              //------------Daily----
-              RadioListTile(
-                  title: Text("Daily"),
-                  value: true,
-                  groupValue:context,
-                  onChanged: (value){}
-              ),
-
-
-
-              //------------Weekly----
-              RadioListTile(
-                  title: Text("Weekly"),
-                  value: false,
-                  groupValue:context,
-                  onChanged: (value){}
-              ),
-            ],
+          Wrap(
+            children: settingsController.repeatOption.map((repeat){
+              return Obx(()=> RadioListTile(
+                  title: Text(repeat),
+                  value: repeat,
+                  groupValue: settingsController.selectedRepeat.value,
+                  onChanged: (value){
+                      settingsController.selectedRepeat.value = repeat;
+                  }
+              ));
+            }).toList(),
           ),
 
-          //-------------
-
+          SizedBox(height: 10,),
 
 
           //=====================Repeat ===================
+          
           Text("Notification Mode",style: TextStyle(
-            fontSize: 20,
+            fontSize: 17,
+            fontWeight: FontWeight.bold
           ),),
-          SizedBox(height: 10,),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              //------------Sound--------------------
-              ChoiceChip(
-                label: Text("Sound"),
-                selected: true,
-                //backgroundColor: Colors.grey,
-                onSelected: (value){},
-                selectedColor: Colors.green[300],
-              ),
-              //------------Vibrate------------------
-              ChoiceChip(
-                label: Text("Vibrate"),
-                selected: false,
-                //backgroundColor: Colors.orange,
-                onSelected: (value){},
-                selectedColor: Colors.green[400],
-              ),
+          SizedBox(height: 15,),
 
-
-              //------------Silent-----------------
-              ChoiceChip(
-                label: Text("Silent"),
-                selected: false,
-                // backgroundColor: Colors.orange,
-                onSelected: (value){},
-                selectedColor: Colors.green,
-              ),
-
-            ],
+          Wrap(
+            spacing: 10,
+            children:settingsController.notificationOption.map((option)=>
+                Obx(()=> ChoiceChip(
+                  label: Text(option),
+                  selectedColor: Colors.green[300],
+                  selected: settingsController.selectedNotificationOption.value == option,
+                  onSelected: (bool selected){
+                   if(selected){
+                     settingsController.selectedNotificationOption.value=option as String;
+                   }
+                  },
+                ))
+            ).toList(),
           ),
 
           SizedBox(height: 10,),

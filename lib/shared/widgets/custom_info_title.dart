@@ -34,7 +34,7 @@ class CustomInfoTitle extends StatelessWidget {
       leading: leading,
       title: Text(title,style: TextStyle(
         fontWeight:titleFontWeight,
-        fontSize: titleFontSize?? 20,
+        fontSize: titleFontSize?? 17,
         color:titleColor?? Colors.black
       ),),
 

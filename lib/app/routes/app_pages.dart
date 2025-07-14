@@ -8,6 +8,7 @@ import 'package:task_app/presentation/dashboard/view/dashboard_screen.dart';
 import 'package:task_app/presentation/intro/bindings/intro_bindings.dart';
 import 'package:task_app/presentation/intro/view/intro_screen.dart';
 import 'package:task_app/presentation/profile/bindings/profile_bindings.dart';
+import 'package:task_app/presentation/settings/bindings/settings_bindings.dart';
 import 'package:task_app/presentation/splash/bindings/splash_bindings.dart';
 import 'package:task_app/presentation/splash/view/splash_screen.dart';
 
@@ -28,7 +29,7 @@ class AppPages{
     GetPage(name: AppRoutes.dashboard, page: ()=>DashboardScreen(),binding: DashboardBindings()),
     GetPage(name: AppRoutes.profile, page: ()=>ProfileScreen(),binding: ProfileBindings()),
     GetPage(name: AppRoutes.account, page: ()=>AccountScreen(),binding: AccountBindings()),
-    GetPage(name: AppRoutes.settings, page: ()=>SettingsScreen()),
+    GetPage(name: AppRoutes.settings, page: ()=>SettingsScreen(),binding: SettingsBindings()),
 
   ];
 

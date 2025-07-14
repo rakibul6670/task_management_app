@@ -2,6 +2,14 @@
 import 'package:flutter/material.dart';
 
 class ConstantTextStyle{
+  //============================= Setting Screen ===================
+  static TextStyle settingSectionTitle = TextStyle(
+    fontWeight: FontWeight.bold,
+    fontSize: 20,
+  );
+
+
+
   //=========================Complete Task Screen =======
   static TextStyle completeTaskSectionTitle = TextStyle(
     fontWeight: FontWeight.bold,
