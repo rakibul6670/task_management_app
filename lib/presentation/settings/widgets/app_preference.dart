@@ -8,6 +8,7 @@ class AppPreference extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(child: Column(
       children: [
+
         //================= Theme Mode ==========
         ListTile(
           title: Text("Theme Mode"),
@@ -22,7 +23,10 @@ class AppPreference extends StatelessWidget {
           ),
         ),
 
+
         SizedBox(height: 10,),
+
+
         //================= Language ============
         ListTile(
           title: Text("Language"),
