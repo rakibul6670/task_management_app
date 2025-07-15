@@ -1,5 +1,5 @@
 class Validation {
-  //============== Name Validation ==========
+  //============== Name Validation ================================================
   static String? nameValidator(String? name) {
     if (name == null || name.trim().isEmpty) {
       return "Name is required";
@@ -13,21 +13,19 @@ class Validation {
     return null;
   }
 
-  //================ Email Validation =============
+  //================ Email Validation =========================================
   static String? emailValidator(String? email) {
     if (email == null || email.trim().isEmpty) {
       return "Email is required";
     }
-
     final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegExp.hasMatch(email.trim())) {
       return 'Enter a valid email address';
     }
-
-    return null; // ✅ validation passed
+    return null;
   }
 
-  //================ Password Validation ===========
+  //================ Password Validation ===========================================
   static String? passwordValidator(String? password) {
     if (password == null || password.trim().isEmpty) {
       return "Password is required";
@@ -44,6 +42,36 @@ class Validation {
       return 'Must contain letters & numbers';
     }
 
-    return null; // ✅ validation passed
+    return null;
   }
+
+
+
+  //======================Task title Validation ================================
+  static String? taskTitleValidator(String? title) {
+    if(title!.trim().isEmpty){
+      return "Task title can't be empty";
+    }
+    else if(title.length < 3){
+      return "task description must be 3 character";
+    }
+    return null;
+  }
+
+  //=========================Task Description ==================================
+
+  static String? taskDescriptionValidator(String? description) {
+    if(description!.trim().isEmpty){
+      return "Task description  can't be empty";
+    }
+    else if(description.length < 3){
+      return "task description must be 3 character";
+    }
+    return null;
+  }
+
+
+
+
+
 }

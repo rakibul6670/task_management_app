@@ -23,6 +23,8 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? errorBorder;
   final InputBorder? focusErrorBorder;
 
+  final int? maxLine;
+
 
 
 
@@ -43,7 +45,8 @@ class CustomTextField extends StatelessWidget {
     this.focusErrorBorder,
     this.hintTextStyle,
     this.inputTextStyle,
-    this.textInputType
+    this.textInputType,
+    this.maxLine
   });
 
   @override
@@ -72,6 +75,8 @@ class CustomTextField extends StatelessWidget {
             controller:controller ,
             obscureText:obscureText?? false,
             style: inputTextStyle,
+            maxLines: maxLine ?? 1,
+            //maxLength: 1,
 
             keyboardType:textInputType?? TextInputType.text,
             
@@ -97,7 +102,7 @@ class CustomTextField extends StatelessWidget {
         ),
 
 
-          //==================== Suffix IconButton =============
+          //--------------------Suffix IconButton --------------------
           Positioned(
               top: 0,
               bottom: 0,

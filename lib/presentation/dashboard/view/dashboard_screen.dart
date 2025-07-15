@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_app/presentation/account/controller/account_controller.dart';
+import 'package:task_app/app/routes/app_routes.dart';
 import 'package:task_app/presentation/dashboard/controller/dashboard_controller.dart';
 
 
@@ -43,7 +43,20 @@ class DashboardScreen extends StatelessWidget {
 
 
       body: Obx(()=> dashboardController.screens[dashboardController.currentIndex.value]),
-
+      
+      
+      //=========================== Floating Action Button =========
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.orange,
+        onPressed: (){
+          Get.toNamed(AppRoutes.addTask);
+        },
+        child: Icon(Icons.add,size: 35,color: Colors.white,
+        ),
+      ),
+      
+      
+      
       //======================== Bottom Navigation Section ==========
       bottomNavigationBar: Obx(()=> BottomNavigationBar(
         backgroundColor: Colors.white,

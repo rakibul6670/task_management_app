@@ -2,6 +2,17 @@
 import 'package:flutter/material.dart';
 
 class ConstantTextStyle{
+  //===========================Add Task Screen ============================
+  static TextStyle addTaskError = TextStyle(
+    fontSize: 15,
+    color: Colors.red
+  );
+
+
+
+
+
+
   //============================= Setting Screen ===================
   static TextStyle settingSectionTitle = TextStyle(
     fontWeight: FontWeight.bold,

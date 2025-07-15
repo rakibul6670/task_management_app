@@ -13,5 +13,7 @@ class AppRoutes{
   static final String account="/account";
   static final  String settings ="/settings";
 
+  static final String addTask ="/addTask";
+
 
 }
