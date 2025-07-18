@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_app/app/routes/app_routes.dart';
 import 'package:task_app/presentation/dashboard/controller/dashboard_controller.dart';
+import 'package:task_app/presentation/dashboard/controller/user_controller.dart';
 
 
 class DashboardScreen extends StatelessWidget {
    DashboardScreen({super.key});
 
-   //-----------------dashboard controller -------------
+   //-----------------dashboard controller Instance-------------
   final DashboardController dashboardController = Get.find<DashboardController>();
-  //------------------Account controller -----------
- // final AccountController accountController =Get.find<AccountController>();
+
+  //---------------------UserController Instance-------------
+  final UserController userController=Get.find<UserController>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class DashboardScreen extends StatelessWidget {
                 Get.toNamed("/profile");
               },
               child:  Obx(()=>Image.asset(
-                dashboardController.userProfileImage.value,
+                userController.userProfileImage.value,
                 height: 40,width: 40,),)),
 
           SizedBox(width: 10,),
@@ -49,7 +52,8 @@ class DashboardScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.orange,
         onPressed: (){
-          Get.toNamed(AppRoutes.addTask);
+         Get.toNamed(AppRoutes.addTask);
+         // Get.toNamed(AppRoutes.taskDetails);
         },
         child: Icon(Icons.add,size: 35,color: Colors.white,
         ),

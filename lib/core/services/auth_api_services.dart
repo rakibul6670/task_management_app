@@ -56,9 +56,9 @@ class AuthApiServices{
           headers: {"Content-Type": "application/json"},
           body: jsonEncode(updateUser)
       );
-      print("Update response : \n ${response.statusCode}");
+
       if(response.statusCode == 200 || response.statusCode == 204){
-        // print("Update User : \n ${response.body}");
+
         Map<String,dynamic> allUser = jsonDecode(response.body);
         if(allUser.isNotEmpty){
           allUser['id']=updateUser;

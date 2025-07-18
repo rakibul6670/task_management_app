@@ -37,27 +37,27 @@ class SettingsScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //================ App Preference =========================================
-              Text("App Preference",style: ConstantTextStyle.settingSectionTitle,),
+              Text("App Preference",style: ConstantTextStyle.sectionTitle,),
               AppPreference(),
 
               SizedBox(height: 15,),
 
 
               //==================== Reminder & Alert Section ===========================
-              Text("Reminder & Alert",style: ConstantTextStyle.settingSectionTitle,),
+              Text("Reminder & Alert",style: ConstantTextStyle.sectionTitle,),
               RemainderAlertSection(),
 
 
               SizedBox(height: 15,),
 
               //========================App Information ===================================
-              Text("App Information",style: ConstantTextStyle.settingSectionTitle,),
+              Text("App Information",style: ConstantTextStyle.sectionTitle,),
               AppInformationSection(),
 
               SizedBox(height: 15,),
 
               //======================Support and Polices =================================
-              Text("Support & Policy",style: ConstantTextStyle.settingSectionTitle,),
+              Text("Support & Policy",style: ConstantTextStyle.sectionTitle,),
               SupportPolicySection(),
 
             ],

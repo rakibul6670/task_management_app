@@ -13,6 +13,7 @@ import 'package:task_app/presentation/profile/bindings/profile_bindings.dart';
 import 'package:task_app/presentation/settings/bindings/settings_bindings.dart';
 import 'package:task_app/presentation/splash/bindings/splash_bindings.dart';
 import 'package:task_app/presentation/splash/view/splash_screen.dart';
+import 'package:task_app/presentation/task_details/view/task_details.dart';
 
 import '../../presentation/account/view/account_screen.dart';
 import '../../presentation/profile/view/profile_screen.dart';
@@ -34,6 +35,7 @@ class AppPages{
     GetPage(name: AppRoutes.settings, page: ()=>SettingsScreen(),binding: SettingsBindings()),
 
     GetPage(name: AppRoutes.addTask, page: ()=> AddTaskScreen(),binding:AddTaskBindings() ),
+    GetPage(name: AppRoutes.taskDetails, page: ()=> TaskDetails()),
 
   ];
 

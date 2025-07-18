@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_app/core/services/task_api_services.dart';
+import 'package:task_app/core/utils/snackbar_utils.dart';
 import 'package:task_app/core/utils/validation.dart';
+import 'package:task_app/presentation/dashboard/controller/task_controller.dart';
+
 
 class AddTaskControllers extends GetxController{
 
@@ -62,33 +66,71 @@ class AddTaskControllers extends GetxController{
   RxString timeError = "".obs;
   RxString dateError = "".obs;
 
-  validationWithAddTask(){
+  RxBool isLoading = false.obs;
+
+  validationWithAddTask() async{
+    //------------Loading indicator show ------
+    isLoading.value =true;
+
     titleError.value=Validation.taskTitleValidator(titleController.text.trim())??"";
     descriptionError.value=Validation.taskDescriptionValidator(descriptionController.text.trim())??"";
 
-    if(selectedTime.value.isEmpty){
-      timeError.value ="Time must select";
-    }
-    else{
-      timeError.value ="";
-    }
-
-    if(selectedDate.value.isEmpty){
-      dateError.value ="Date must select";
-    }
-    else{
-      dateError.value="";
-    }
+    //---------------Time error value set -------------
+    selectedTime.value.isEmpty
+        ? timeError.value ="Time must select"
+        :timeError.value ="";
 
 
-    if(titleError.value.isNotEmpty && descriptionError.value.isNotEmpty
-        && timeError.value.isNotEmpty && dateError.value.isNotEmpty){
-      print("validated");
+
+    //---------------date error value set ------------
+    selectedDate.value.isEmpty
+        ? dateError.value ="Date must select"
+        :dateError.value ="";
+
+
+
+    if(titleError.value.isEmpty && descriptionError.value.isEmpty
+        && timeError.value.isEmpty && dateError.value.isEmpty){
+      await addTask();
+      isLoading.value=false;
     }
 
   }
 
+
+  //=============================Task Add Function ===========================
+  final TaskController taskController=Get.find<TaskController>();
+
   Future<void> addTask() async{
+    try{
+
+     final response = await TaskApiServices.post({
+       "title":titleController.text,
+       "description":descriptionController.text,
+       "date":selectedDate.value,
+       "time":selectedTime.value,
+     });
+
+     if(response != null){
+       titleController.clear();
+       descriptionController.clear();
+       selectedTime.value="No select time";
+       selectedDate.value="No select date";
+       taskController.loadAllTask();
+       SnackbarUtil.showSuccess("Successful", "Task Add");
+
+     }
+     else{
+       SnackbarUtil.showInfo("Failed", "Task Add");
+     }
+
+
+    }
+    catch(e){
+      SnackbarUtil.showError("Error", "Task add error : $e");
+
+    }
+
 
 
   }

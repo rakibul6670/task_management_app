@@ -13,7 +13,7 @@ class AllTasks extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(10),
         child: Column(
           children: [
             //===========================Search box section ============
@@ -41,7 +41,7 @@ class AllTasks extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("All Task",style: ConstantTextStyle.allTaskSectionTitle,),
+                Text("All Task",style: ConstantTextStyle.sectionTitle,),
                 CustomIconButton(
                     onPressed: (){},
                     height: 50,

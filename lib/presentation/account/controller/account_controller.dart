@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:task_app/core/services/auth_api_services.dart';
 import 'package:task_app/core/services/local_storage.dart';
+import 'package:task_app/presentation/dashboard/controller/user_controller.dart';
 import 'package:task_app/presentation/profile/controller/profile_controller.dart';
 import '../../../core/utils/snackbar_utils.dart';
 import '../../../core/utils/validation.dart';
-import '../../dashboard/controller/dashboard_controller.dart';
+
 
 class AccountController extends GetxController{
 
@@ -31,17 +32,16 @@ class AccountController extends GetxController{
   //-------------------profile image set ---------
   RxBool isMale =true.obs;
 
-  //-------------------profile selected -----
 
-  //RxBool profileSelect=true.obs;
 
   //---------------local storage ------
   final LocalStorage localStorage =LocalStorage();
 
   //-----------------Profile Controller ------
   final ProfileController profileController=Get.find<ProfileController>();
-  //-----------------Dashboard Controller ------
-  final DashboardController dashboardController =Get.find<DashboardController>();
+  //-----------------User Controller ------
+  final UserController userController =Get.find<UserController>();
+
 
   @override
   void onInit() async{
@@ -86,20 +86,20 @@ class AccountController extends GetxController{
 
         if(isMale.value){
           profileController.userProfile.value="assets/images/male-user-1.png";
-          dashboardController.userProfileImage.value="assets/images/male-user-1.png";
+          userController.userProfileImage.value="assets/images/male-user-1.png";
 
           localStorage.setUserProfile("assets/images/male-user-1.png");
           localStorage.setUserProfileIsMale(true);
 
-         // isMale.value =localStorage.userProfileIsMale;
+
         }
         else{
           profileController.userProfile.value="assets/images/female-user-1.png";
-          dashboardController.userProfileImage.value="assets/images/female-user-1.png";
+          userController.userProfileImage.value="assets/images/female-user-1.png";
 
           localStorage.setUserProfile("assets/images/female-user-1.png");
           localStorage.setUserProfileIsMale(false);
-          //isMale.value =localStorage.userProfileIsMale;
+
         }
 
 

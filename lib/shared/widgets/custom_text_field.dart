@@ -24,6 +24,7 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? focusErrorBorder;
 
   final int? maxLine;
+  final int? maxLength;
 
 
 
@@ -46,7 +47,7 @@ class CustomTextField extends StatelessWidget {
     this.hintTextStyle,
     this.inputTextStyle,
     this.textInputType,
-    this.maxLine
+    this.maxLine, this.maxLength
   });
 
   @override
@@ -76,7 +77,7 @@ class CustomTextField extends StatelessWidget {
             obscureText:obscureText?? false,
             style: inputTextStyle,
             maxLines: maxLine ?? 1,
-            //maxLength: 1,
+            maxLength: maxLength??null,
 
             keyboardType:textInputType?? TextInputType.text,
             

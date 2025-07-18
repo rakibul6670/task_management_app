@@ -1,38 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:task_app/core/services/local_storage.dart';
+import 'package:task_app/presentation/dashboard/controller/task_controller.dart';
 import 'package:task_app/presentation/dashboard/view/all_tasks/all_tasks.dart';
 import 'package:task_app/presentation/dashboard/view/complete_tasks/complete_tasks.dart';
 import 'package:task_app/presentation/dashboard/view/today_tasks/today_tasks.dart';
 
 class DashboardController extends GetxController{
 
-  List<Widget> screens =[
-    TodayTasks(),
-    AllTasks(),
-    CompleteTasks(),
-  ];
-
-  //--------------------Current Index --------
-  RxInt currentIndex=0.obs;
-
-  //---------------------User Profile ------
-  RxString userProfileImage ="assets/images/male-user-1.png".obs;
-
-  final LocalStorage localStorage =LocalStorage();
-
   @override
   void onInit() {
     super.onInit();
-    profileLoad();
-
+    screens =[
+      TodayTasks(),
+      AllTasks(),
+      CompleteTasks(),
+    ];
   }
 
-  Future<void> profileLoad() async{
-   await localStorage.init();
-    userProfileImage.value =localStorage.userProfile;
-  }
 
+  //================================Dashboard Screen ===========================
+  late List<Widget> screens;
 
+  //--------------------Current Index --------
+  RxInt currentIndex=0.obs;
 
 }

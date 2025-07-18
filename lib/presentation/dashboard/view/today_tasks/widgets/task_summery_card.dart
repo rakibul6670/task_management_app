@@ -9,7 +9,7 @@ class TaskSummaryCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final IconData icons;
-  final double count;
+  final int count;
   final double? width;
 
 
@@ -43,7 +43,7 @@ class TaskSummaryCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //----------------Title ---------------
-              Text(title,style:ConstantTextStyle.taskCardSectionTitle),
+              Text(title,style:ConstantTextStyle.sectionTitle),
 
               SizedBox(height: 8,),
 

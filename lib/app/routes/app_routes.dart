@@ -14,6 +14,7 @@ class AppRoutes{
   static final  String settings ="/settings";
 
   static final String addTask ="/addTask";
+  static final String taskDetails="/taskDetails";
 
 
 }

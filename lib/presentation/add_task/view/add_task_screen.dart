@@ -41,7 +41,9 @@ class AddTaskScreen extends StatelessWidget {
               children: [
                 //-----------------------Task Title --------------------------------
                 CustomTextField(
-                   controller: addTaskControllers.titleController,
+                    controller: addTaskControllers.titleController,
+                    maxLength: 30,
+
                     borderRadius: 17,
                     fillColor: Colors.grey.shade200,
                     contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
@@ -112,14 +114,16 @@ class AddTaskScreen extends StatelessWidget {
 
                 //-----------------------------Add button-------------------------
                 SizedBox(height: 15,),
-                CustomButton(
+                Obx(()=>addTaskControllers.isLoading.value
+                    ?Center(child: CircularProgressIndicator(color: Colors.black54,))
+                    :CustomButton(
                     onPressed: (){
                       addTaskControllers.validationWithAddTask();
                     },
                     height: 45,
                     width: double.infinity,
                     buttonName: 'Add Task'
-                ),
+                ),),
 
               ],
             ),

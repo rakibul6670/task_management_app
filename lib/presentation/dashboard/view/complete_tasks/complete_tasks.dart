@@ -37,7 +37,7 @@ class CompleteTasks extends StatelessWidget {
             SizedBox(height: 15,),
             //========================= Section title =========
 
-            Text("All Task",style: ConstantTextStyle.completeTaskSectionTitle,),
+            Text("All Task",style: ConstantTextStyle.sectionTitle,),
 
             SizedBox(height: 15,),
 

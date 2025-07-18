@@ -1,36 +1,40 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:task_app/app/constants/constant_text_style.dart';
+import 'package:task_app/presentation/dashboard/controller/task_controller.dart';
 import 'package:task_app/presentation/dashboard/view/today_tasks/widgets/task_progress_chart.dart';
 import 'package:task_app/presentation/dashboard/view/today_tasks/widgets/task_summery_card.dart';
 import 'package:task_app/presentation/dashboard/view/today_tasks/widgets/today_task_section.dart';
 
 class TodayTasks extends StatelessWidget {
-  const TodayTasks({super.key});
 
+   const TodayTasks({super.key,});
 
+ 
   @override
   Widget build(BuildContext context) {
     final Size size=MediaQuery.sizeOf(context);
+    final TaskController taskController =Get.find<TaskController>();
     return SingleChildScrollView(
+
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
-         // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //------------------Section title -------
-            Text("Task Summary",style: ConstantTextStyle.taskCardSectionTitle,),
+            Text("Task Summary",style: ConstantTextStyle.sectionTitle,),
             SizedBox(height: 10,),
             //=========================Today Task =========================
-            TaskSummaryCard(
-              width: size.width * 1,
-              title: "Total Task",
-              subtitle:"All created tasks",
-              count:34,
-              backgroundColor: Colors.blue,
-              icons: Icons.task,
-            ),
+             Obx(()=>TaskSummaryCard(
+               width: size.width * 1,
+               title: "Total Task",
+               subtitle:"All created tasks",
+               count:taskController.totalTask.value,
+               backgroundColor: Colors.blue,
+               icons: Icons.task,
+             )),
 
             SizedBox(height: 10,),
 
@@ -63,12 +67,12 @@ class TodayTasks extends StatelessWidget {
 
             //=========================Progress Section =====================================
             //--------------Progress section title-------
-            Text("Progress Overview",style: ConstantTextStyle.taskCardSectionTitle,),
+            Text("Progress Overview",style: ConstantTextStyle.sectionTitle,),
 
             SizedBox(height: 10,),
             //--------------------Progress Chart --------
             Center(
-              child: TaskProgressChart(),
+              child: TaskProgressChart(taskController: taskController,),
             ),
             SizedBox(height: 10,),
 
@@ -76,10 +80,10 @@ class TodayTasks extends StatelessWidget {
 
             //==========================Today Task Section ================================
             //--------------Task Task Section title ------
-            Text("Today's Task",style: ConstantTextStyle.taskCardSectionTitle,),
+            Text("Today's Task",style: ConstantTextStyle.sectionTitle,),
             SizedBox(height: 10,),
             //-----------------Today task --------
-            TodayTaskSection(),
+            TodayTaskSection(taskController: taskController,),
 
           ],
         ),
